@@ -5,6 +5,7 @@ defmodule Companies.PendingChangesTest do
   import ExUnit.CaptureLog
 
   alias Companies.{Companies, PendingChanges, Schema.PendingChange}
+  alias Companies.Schema.{Company, PendingChanges}
 
   describe "all/1" do
     setup do
@@ -61,6 +62,8 @@ defmodule Companies.PendingChangesTest do
 
       assert {:ok, %{approved: true}} = PendingChanges.approve(id, true)
       assert %{total_entries: 0} = Companies.all()
+
+      assert %{removed_pending_change_id: id} = Repo.get!(Company, company_id)
     end
 
     test "rejects a pending change" do

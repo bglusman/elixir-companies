@@ -2,12 +2,13 @@ defmodule Companies.Schema.Industry do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Companies.Schema.Company
+  alias Companies.Schema.{Company, PendingChange}
 
   schema "industries" do
     field :name, :string
 
     has_many :companies, Company
+    belongs_to :removed_pending_change, PendingChange
 
     timestamps()
   end

@@ -2,7 +2,7 @@ defmodule Companies.Schema.Job do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Companies.Schema.Company
+  alias Companies.Schema.{Company, PendingChange}
 
   schema "jobs" do
     field :title, :string
@@ -10,6 +10,7 @@ defmodule Companies.Schema.Job do
     field :remote, :boolean
 
     belongs_to :company, Company
+    belongs_to :removed_pending_change, PendingChange
 
     timestamps()
   end

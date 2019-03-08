@@ -23,7 +23,8 @@ defmodule Companies.Companies do
     (c in Company)
     |> from()
     |> predicates(params)
-    |> preload([:industry, :jobs])
+    |> preload([_c, i, j], industry: i, jobs: j)
+    |> where([c, _i, _j], is_nil(c.removed_pending_change_id))
     |> Repo.paginate(page: page)
   end
 
@@ -57,9 +58,10 @@ defmodule Companies.Companies do
 
   """
   def count do
-    query = from c in Company, select: count(c.id)
-
-    Repo.one(query)
+    from(c in Company)
+    |> where([c], is_nil(c.removed_pending_change_id))
+    |> select([c], count(c.id))
+    |> Repo.one()
   end
 
   @doc """
@@ -79,8 +81,10 @@ defmodule Companies.Companies do
   def get!(id, opts \\ []) do
     preloads = Keyword.get(opts, :preloads, [])
 
-    Company
+    from(c in Company)
     |> preload(^preloads)
+    |> from()
+    |> where([c], is_nil(c.removed_pending_change_id))
     |> Repo.get!(id)
   end
 

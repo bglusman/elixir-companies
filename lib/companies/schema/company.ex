@@ -2,7 +2,7 @@ defmodule Companies.Schema.Company do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Companies.Schema.{Industry, Job}
+  alias Companies.Schema.{Industry, Job, PendingChange}
 
   schema "companies" do
     field :blog, :string
@@ -13,7 +13,8 @@ defmodule Companies.Schema.Company do
     field :url, :string
 
     belongs_to :industry, Industry
-    has_many :jobs, Job
+    has_many :jobs, Job, defaults: [removed_pending_change_id: nil]
+    belongs_to :removed_pending_change, PendingChange
 
     timestamps()
   end
