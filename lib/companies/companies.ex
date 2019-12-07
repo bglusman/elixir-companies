@@ -23,8 +23,8 @@ defmodule Companies.Companies do
     (c in Company)
     |> from()
     |> predicates(params)
-    |> preload([_c, i, j], industry: i, jobs: j)
     |> where([c, _i, _j], is_nil(c.removed_pending_change_id))
+    |> preload([:industry, :jobs])
     |> Repo.paginate(page: page)
   end
 

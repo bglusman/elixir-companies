@@ -4,8 +4,8 @@ defmodule Companies.PendingChangesTest do
   import Companies.Factory
   import ExUnit.CaptureLog
 
-  alias Companies.{Companies, PendingChanges, Schema.PendingChange}
-  alias Companies.Schema.{Company, PendingChanges}
+  alias Companies.Schema.{Company, PendingChange}
+  alias Companies.{Companies, PendingChanges}
 
   describe "all/1" do
     setup do
