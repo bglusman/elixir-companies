@@ -14,6 +14,8 @@ defmodule Companies.Schema.Company do
 
     belongs_to :industry, Industry
     has_many :jobs, Job, defaults: [removed_pending_change_id: nil]
+
+    # Optional reference to the change that removed the resouce
     belongs_to :removed_pending_change, PendingChange
 
     timestamps()

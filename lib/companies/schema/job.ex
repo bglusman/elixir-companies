@@ -10,6 +10,7 @@ defmodule Companies.Schema.Job do
     field :remote, :boolean
 
     belongs_to :company, Company
+    # Optional reference to the change that removed the resouce
     belongs_to :removed_pending_change, PendingChange
 
     timestamps()
