@@ -25,7 +25,7 @@ defmodule Companies.Companies do
     |> predicates(params)
     |> order_by(^order)
     |> where([c, _i, _j], is_nil(c.removed_pending_change_id))
-    |> preload([:industry, :jobs])
+    |> preload([:industry, :jobs, :locations])
     |> Repo.paginate(page: page)
   end
 

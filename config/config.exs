@@ -63,6 +63,7 @@ config :phoenix, :template_engines,
 
 config :companies, Notify.Mailer, adapter: Bamboo.LocalAdapter
 
+config :companies, Companies.Repo, types: Companies.PostgisTypes
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
