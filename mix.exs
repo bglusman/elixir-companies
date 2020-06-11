@@ -46,7 +46,7 @@ defmodule Companies.MixProject do
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.14"},
       {:phoenix_live_dashboard,
-       git: "https://github.com/bglusman/phoenix_live_dashboard.git", branch: "historical_data"},
+       git: "https://github.com/bglusman/phoenix_live_dashboard.git", branch: "historical_data_uplot_master"},
       {:circular_buffer, git: "https://github.com/keathley/circular_buffer.git"},
       {:phoenix_pubsub, "~> 2.0"},
       {:plug_cowboy, "~> 2.2"},
